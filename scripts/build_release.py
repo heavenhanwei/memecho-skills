@@ -51,7 +51,7 @@ def build(output_dir):
 
     digest = hashlib.sha256(archive_path.read_bytes()).hexdigest()
     checksum_path = output_dir / "SHA256SUMS.txt"
-    checksum_path.write_text(f"{digest}  {archive_path.name}\n", encoding="utf-8", newline="\n")
+    checksum_path.write_bytes(f"{digest}  {archive_path.name}\n".encode("utf-8"))
     print(archive_path)
     print(checksum_path)
     return archive_path, checksum_path
