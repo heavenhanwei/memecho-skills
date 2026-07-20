@@ -2,6 +2,15 @@
 
 All notable changes to this project are documented here.
 
+## 1.0.1 — 2026-07-20
+
+Marketplace compatibility patch.
+
+- Added explicit permissions and safety boundaries.
+- Added `metadata.openclaw` in the single-line JSON format required by OpenClaw.
+- Declared zero required binaries, environment variables, and network access for the core text workflow.
+- Improved Python 3.9 and cross-platform release-building compatibility.
+
 ## 1.0.0 — 2026-07-20
 
 First stable community release.

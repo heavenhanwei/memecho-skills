@@ -100,13 +100,13 @@ memecho-skills/
 
 ## 1.0 发行包
 
-GitHub Release 附带适用于 SkillHub 等 Agent Skills 平台的 `memecho-analyze-conversation-v1.0.0.zip`。压缩包顶层直接包含 `SKILL.md`，并附 `SHA256SUMS.txt` 用于完整性校验。
+GitHub Release 附带适用于 SkillHub 等 Agent Skills 平台的 `memecho-analyze-conversation-v1.0.1.zip`。压缩包顶层直接包含 `SKILL.md`，并附 `SHA256SUMS.txt` 用于完整性校验。
 
 ```bash
 python scripts/build_release.py
 ```
 
-版本历史见 [CHANGELOG](CHANGELOG.md)，1.0 发布说明见 [RELEASE_NOTES_1.0.0](RELEASE_NOTES_1.0.0.md)。
+版本历史见 [CHANGELOG](CHANGELOG.md)，1.0 发布说明见 [RELEASE_NOTES_1.0.1](RELEASE_NOTES_1.0.1.md)。
 
 ## 验证
 

@@ -2,14 +2,22 @@
 name: memecho-analyze-conversation
 description: Analyze supplied conversation text, transcripts, audio, or video for meeting minutes, speaker-level facts/opinions/attitudes, target-person VAD trajectories, self-echo communication effects, and interactive coaching. Use when a user asks memEcho to review a meeting, conversation, interview, voice note, transcript, a named participant, “me/myself,” communication influence, weak moments, or simulated practice with evidence and uncertainty boundaries.
 license: MIT
-metadata:
-  author: heavenhanwei
-  version: "1.0.0"
+metadata: {"author":"heavenhanwei","version":"1.0.1","openclaw":{"homepage":"https://github.com/heavenhanwei/memecho-skills","requires":{"bins":[],"env":[]}}}
 ---
 
 # memEcho Conversation Analysis
 
 Turn one conversation artifact into an evidence-linked report or an interactive coaching session. Distinguish observed expression from inner emotion and never present probabilistic analysis as diagnosis or fact.
+
+## Permissions and safety
+
+Use least privilege for every run:
+
+- Required: read only the user-supplied text, transcript, or authorized attachment and return analysis in the conversation.
+- Optional local: run `scripts/validate_contract.py` with Python 3.9+ only when JSON contract validation is needed. It reads the named JSON file, writes nothing, and makes no network requests.
+- Conditional external: access transcription, acoustic analysis, or a connected memEcho service only when an adapter exists and the user authorizes the media and scope. Disclose every signal actually used.
+- Not permitted by default: request secrets, access unrelated files, use the network, write long-term memory, infer biometric identity, send messages, create tasks, or update external systems.
+- Treat recordings and transcripts as sensitive. Confirm that the user is authorized to record, upload, and analyze other participants when consent is unclear.
 
 ## Workflow
 

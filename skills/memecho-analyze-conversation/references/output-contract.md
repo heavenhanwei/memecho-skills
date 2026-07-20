@@ -25,7 +25,7 @@ The result keeps observations, interpretations, evidence, and uncertainty separa
   "insights": [{"id": "in_01", "claim": "…", "claim_level": "interpreted", "confidence": 0.72, "evidence_refs": ["ev_01"], "alternatives": ["…"]}],
   "evidence": [{"id": "ev_01", "source_type": "transcript", "speaker_id": "speaker_1", "start_ms": 12000, "end_ms": 18000, "segment_id": "seg_03", "excerpt": "…", "quality_flags": []}],
   "uncertainties": ["缺少原始音频，未分析声学特征"],
-  "provenance": {"skill_version": "1.0.0", "service_version": null, "model_manifest": []},
+  "provenance": {"skill_version": "1.0.1", "service_version": null, "model_manifest": []},
   "memory": {"written": false, "consent_basis": null}
 }
 ```

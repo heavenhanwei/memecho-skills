@@ -3,6 +3,7 @@
 
 import argparse
 import hashlib
+import json
 import re
 import zipfile
 from pathlib import Path
@@ -33,7 +34,14 @@ def archive_entry(archive, source, target):
 def build(output_dir):
     version = declared_version()
     skill_text = (SKILL / "SKILL.md").read_text(encoding="utf-8")
-    if f'version: "{version}"' not in skill_text:
+    metadata_line = next(
+        (line for line in skill_text.splitlines() if line.startswith("metadata: ")),
+        None,
+    )
+    if metadata_line is None:
+        raise ValueError("SKILL.md must contain single-line metadata JSON")
+    metadata = json.loads(metadata_line.split(":", 1)[1].strip())
+    if metadata.get("version") != version:
         raise ValueError("SKILL.md metadata.version does not match VERSION")
 
     output_dir.mkdir(parents=True, exist_ok=True)

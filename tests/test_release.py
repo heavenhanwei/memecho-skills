@@ -1,4 +1,5 @@
 import hashlib
+import json
 import sys
 import tempfile
 import unittest
@@ -15,9 +16,15 @@ from scripts.build_release import build, declared_version
 class ReleasePackageTest(unittest.TestCase):
     def test_versions_are_aligned(self):
         version = declared_version()
-        self.assertEqual("1.0.0", version)
+        self.assertEqual("1.0.1", version)
         self.assertIn(f'version = "{version}"', (ROOT / "pyproject.toml").read_text(encoding="utf-8"))
         self.assertIn(f'__version__ = "{version}"', (ROOT / "src" / "memecho_cli" / "__init__.py").read_text(encoding="utf-8"))
+        skill_text = (ROOT / "skills" / "memecho-analyze-conversation" / "SKILL.md").read_text(encoding="utf-8")
+        metadata_line = next(line for line in skill_text.splitlines() if line.startswith("metadata: "))
+        metadata = json.loads(metadata_line.split(":", 1)[1].strip())
+        self.assertEqual(version, metadata["version"])
+        self.assertIn("openclaw", metadata)
+        self.assertEqual({"bins": [], "env": []}, metadata["openclaw"]["requires"])
 
     def test_release_archive_is_flat_and_verified(self):
         with tempfile.TemporaryDirectory() as temp:
