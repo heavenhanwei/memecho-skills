@@ -1,6 +1,10 @@
 ---
 name: memecho-analyze-conversation
 description: Analyze supplied conversation text, transcripts, audio, or video for meeting minutes, speaker-level facts/opinions/attitudes, target-person VAD trajectories, self-echo communication effects, and interactive coaching. Use when a user asks memEcho to review a meeting, conversation, interview, voice note, transcript, a named participant, “me/myself,” communication influence, weak moments, or simulated practice with evidence and uncertainty boundaries.
+license: MIT
+metadata:
+  author: heavenhanwei
+  version: "1.0.0"
 ---
 
 # memEcho Conversation Analysis
