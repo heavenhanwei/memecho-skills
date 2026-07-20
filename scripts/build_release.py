@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build a deterministic, marketplace-ready memEcho Skill ZIP."""
+"""Build a stable, marketplace-ready memEcho Skill ZIP."""
 
 import argparse
 import hashlib
@@ -23,6 +23,7 @@ def declared_version():
 
 def archive_entry(archive, source, target):
     info = zipfile.ZipInfo(target.as_posix(), FIXED_ZIP_TIME)
+    info.create_system = 3
     info.compress_type = zipfile.ZIP_DEFLATED
     mode = 0o755 if source.suffix == ".py" else 0o644
     info.external_attr = (mode & 0xFFFF) << 16

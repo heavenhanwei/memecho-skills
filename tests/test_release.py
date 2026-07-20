@@ -29,6 +29,7 @@ class ReleasePackageTest(unittest.TestCase):
                 self.assertIn("agents/openai.yaml", names)
                 self.assertFalse(any(name.startswith("memecho-analyze-conversation/") for name in names))
                 self.assertFalse(any("__pycache__" in name for name in names))
+                self.assertTrue(all(info.create_system == 3 for info in package.infolist()))
             digest = hashlib.sha256(archive.read_bytes()).hexdigest()
             self.assertEqual(f"{digest}  {archive.name}\n", checksums.read_text(encoding="utf-8"))
 
