@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "memecho-skills"
+version = "0.1.0"
+description = "Portable Agent Skill and request-contract CLI for evidence-linked conversation analysis"
+readme = "README.md"
+requires-python = ">=3.9"
+license = {text = "MIT"}
+authors = [{name = "memEcho contributors"}]
+keywords = ["agent-skills", "conversation-analysis", "vad", "meeting-minutes", "coaching"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+]
+dependencies = []
+
+[project.scripts]
+memecho = "memecho_cli.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/heavenhanwei/memecho-skills"
+Repository = "https://github.com/heavenhanwei/memecho-skills"
+Issues = "https://github.com/heavenhanwei/memecho-skills/issues"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+

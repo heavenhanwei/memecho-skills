@@ -1,0 +1,27 @@
+{
+  "schema_version": "1.1",
+  "request_id": "req_example_meeting",
+  "source": {
+    "type": "transcript",
+    "text": "[00:00] 阿青：今天要确认试点范围。\n[00:18] 小林：我同意先处理搜索，但我不赞成同时重做首页。",
+    "path": null,
+    "mime_type": "text/plain"
+  },
+  "session": {
+    "title": "试点范围讨论",
+    "occurred_at": null,
+    "context": "meeting"
+  },
+  "participants": [
+    {"id": "speaker_1", "name": "阿青", "is_self": true},
+    {"id": "speaker_2", "name": "小林", "is_self": false}
+  ],
+  "self_identity_basis": "user_confirmed",
+  "target_participant_ids": ["speaker_1"],
+  "language": "zh-CN",
+  "focus": ["minutes", "content_analysis", "vad", "self_echo"],
+  "coaching": {"enabled": false, "max_scenes": 1},
+  "marks": [],
+  "memory": {"mode": "off", "scope": []}
+}
+

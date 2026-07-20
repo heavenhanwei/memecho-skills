@@ -1,0 +1,108 @@
+{
+  "schema_version": "1.1",
+  "request_id": "req_example_meeting",
+  "analysis_mode": "text_only",
+  "scope": {
+    "single_session": true,
+    "signals_used": ["transcript", "linguistic"],
+    "signals_missing": ["acoustic"],
+    "quality": 0.88,
+    "target_participant_ids": ["speaker_1"],
+    "self_participant_id": "speaker_1",
+    "self_identity_basis": "user_confirmed"
+  },
+  "minutes": {
+    "summary": "双方确认第一阶段只处理搜索，首页调整留待后续评审。",
+    "focus": ["试点范围", "搜索性能", "首页调整"],
+    "consensus": ["第一阶段只做搜索"],
+    "disagreements": ["是否同时调整首页"],
+    "explicit_actions": [
+      {
+        "text": "小林周三前整理性能数据",
+        "owner": "speaker_2",
+        "due_at": null,
+        "origin": "discussed",
+        "status": "confirmed",
+        "evidence_refs": ["ev_02"]
+      }
+    ],
+    "recommendations": [
+      {
+        "text": "下次评审前明确首页调整的决策标准",
+        "owner": null,
+        "due_at": null,
+        "origin": "suggested",
+        "status": "proposed",
+        "evidence_refs": ["ev_02"]
+      }
+    ]
+  },
+  "content_analysis": [
+    {
+      "participant_id": "speaker_1",
+      "fact_claims": [],
+      "opinions": ["首页可能影响转化"],
+      "attitudes": ["接受先缩小范围"],
+      "influence_summary": ["自我修正之后，小林明确接受第一阶段范围"]
+    }
+  ],
+  "participants": [],
+  "vad_series": [
+    {
+      "participant_id": "speaker_1",
+      "segment_id": "seg_01",
+      "v": 0.15,
+      "a": 0.35,
+      "d": 0.45,
+      "scale": "-1..1",
+      "confidence": 0.72,
+      "linguistic_weight": 1,
+      "acoustic_weight": 0,
+      "evidence_refs": ["ev_01"]
+    }
+  ],
+  "interaction_events": [],
+  "self_echo": {
+    "participant_id": "speaker_1",
+    "identity_basis": "user_confirmed",
+    "effects": [],
+    "alternatives": []
+  },
+  "coaching": {"enabled": false, "status": "not_requested", "scenes": []},
+  "insights": [
+    {
+      "id": "in_01",
+      "claim": "阿青的自我修正与范围收束之后出现明确共识。",
+      "claim_level": "interpreted",
+      "confidence": 0.78,
+      "evidence_refs": ["ev_01", "ev_02"],
+      "alternatives": ["双方可能在会前已接近共识"]
+    }
+  ],
+  "evidence": [
+    {
+      "id": "ev_01",
+      "source_type": "transcript",
+      "speaker_id": "speaker_1",
+      "start_ms": 34000,
+      "end_ms": 54000,
+      "segment_id": "seg_01",
+      "excerpt": "我刚才把两个问题绑得太紧了。我们先把搜索定义成第一阶段，可以吗？",
+      "quality_flags": []
+    },
+    {
+      "id": "ev_02",
+      "source_type": "transcript",
+      "speaker_id": "speaker_2",
+      "start_ms": 55000,
+      "end_ms": 71000,
+      "segment_id": "seg_02",
+      "excerpt": "可以。第一阶段只做搜索，我周三前整理性能数据。",
+      "quality_flags": []
+    }
+  ],
+  "uncertainties": ["缺少原始音频，未分析声学特征"],
+  "provenance": {"skill_version": "1.1.0", "service_version": null, "model_manifest": []},
+  "memory": {"written": false, "consent_basis": null}
+}
+
