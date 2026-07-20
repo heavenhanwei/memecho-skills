@@ -5,6 +5,8 @@
 
 memEcho 是一套面向会议、访谈、对话和独白的对话分析 Skill。它把内容纪要、事实/观点/态度拆解、VAD 情绪表达轨迹、自我回声与互动陪练组织为可审计的工作流。
 
+Turn one conversation artifact into an evidence-linked report or an interactive coaching session.
+
 > 当前仓库提供 Agent Skill、便携 JSON 合同、合同校验器和请求构造 CLI。完整音频声学分析需要另行连接获授权的 memEcho 服务或本地媒体工具；仅有文本时不会臆测音高、能量、语速或音质。
 
 ## 能做什么
