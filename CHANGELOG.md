@@ -2,6 +2,15 @@
 
 All notable changes to this project are documented here.
 
+## 1.0.2 — 2026-07-22
+
+Report readability release.
+
+- Added ASCII-only confidence and VAD visualizations to Markdown reports.
+- Added responsive, self-contained HTML reports with no external assets or network calls.
+- Added `memecho render` for Markdown, HTML, or paired output.
+- Added report examples and tests for rendering, escaping, responsive layout, and CLI output.
+
 ## 1.0.1 — 2026-07-20
 
 Marketplace compatibility patch.

@@ -1,8 +1,8 @@
 ---
 name: memecho-analyze-conversation
-description: Analyze supplied conversation text, transcripts, audio, or video for meeting minutes, speaker-level facts/opinions/attitudes, target-person VAD trajectories, self-echo communication effects, and interactive coaching. Use when a user asks memEcho to review a meeting, conversation, interview, voice note, transcript, a named participant, “me/myself,” communication influence, weak moments, or simulated practice with evidence and uncertainty boundaries.
+description: Analyze supplied conversation text, transcripts, audio, or video for evidence-linked meeting minutes, speaker facts/opinions/attitudes, target-person VAD trajectories, self-echo effects, and interactive coaching; render readable Markdown with ASCII charts or standalone HTML reports. Use when a user asks memEcho to review a meeting, conversation, interview, voice note, transcript, named participant, “me/myself,” communication influence, weak moments, simulated practice, visual report, Markdown report, or HTML report.
 license: MIT
-metadata: {"author":"heavenhanwei","version":"1.0.1","openclaw":{"homepage":"https://github.com/heavenhanwei/memecho-skills","requires":{"bins":[],"env":[]}}}
+metadata: {"author":"heavenhanwei","version":"1.0.2","openclaw":{"homepage":"https://github.com/heavenhanwei/memecho-skills","requires":{"bins":[],"env":[]}}}
 ---
 
 # memEcho Conversation Analysis
@@ -106,6 +106,8 @@ Do not fabricate the user's reply or score an unanswered exercise. Mark an exerc
 
 ### 5. Produce evidence-linked output
 
+Resolve the presentation format before rendering: default to Markdown, use HTML when requested, and produce both views from the same analysis when requested. Read [report-rendering.md](references/report-rendering.md) for ASCII charts, responsive HTML, accessibility, escaping, and artifact rules.
+
 Every material conclusion needs a timestamp or stable segment ID, confidence, and plausible alternative where interpretation is involved. Default Markdown headings:
 
 - `分析范围、目标人物与可信度`
@@ -116,6 +118,8 @@ Every material conclusion needs a timestamp or stable segment ID, confidence, an
 - `陪练模式`（仅在请求时）
 - `证据与不确定性`
 - `继续问 memEcho`
+
+In Markdown, include compact ASCII-only confidence and VAD charts when numerical data exists. In HTML, create a self-contained offline file with embedded CSS, semantic sections, visible action status, VAD meters, evidence index, and safety footer. Presentation must not invent precision or alter analysis semantics.
 
 Offer structured JSON only when requested or when another tool consumes it. JSON must follow [output-contract.md](references/output-contract.md).
 
@@ -130,6 +134,8 @@ Never infer cross-session identity from voice embeddings, silently save preferen
 ```text
 python scripts/validate_contract.py request path/to/request.json
 python scripts/validate_contract.py result path/to/result.json
+# Repository CLI only, when installed
+memecho render path/to/result.json --format both --output report
 ```
 
 The validator checks the portable minimum contract. Implementations may add fields but must not redefine required semantics.

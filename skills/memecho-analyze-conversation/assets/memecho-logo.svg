@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="title desc">
+  <title id="title">memEcho logo mark</title>
+  <desc id="desc">An organic violet memory seed crossed by a returning echo path, with a dark listening core.</desc>
+  <defs>
+    <mask id="echo-cut">
+      <rect width="256" height="256" fill="#fff"/>
+      <path d="M173 75C146 53 106 51 79 71C51 91 42 129 58 158C75 190 113 203 146 190" fill="none" stroke="#000" stroke-width="30" stroke-linecap="round"/>
+    </mask>
+  </defs>
+  <path fill="#6D5ED8" mask="url(#echo-cut)" d="M128 17C179 14 222 47 233 94C245 143 225 194 184 222C142 250 84 241 48 205C12 169 9 111 36 68C57 35 91 19 128 17Z"/>
+  <path fill="#25243A" d="M72 128C83 108 110 101 131 111C152 121 162 145 153 166C143 189 115 199 92 188C68 177 59 151 72 128Z"/>
+</svg>

@@ -14,6 +14,8 @@ Treat a user message beginning with `memecho` as an explicit invocation of this 
 | `memecho coach` | Interactive coaching; present one exercise and wait for the user |
 | `memecho help` | Show command help without analyzing content |
 
+For a completed result contract, the repository CLI also supports `memecho render result.json --format markdown|html|both`. This is a renderer, not a new analysis module.
+
 If no subcommand is provided, treat `memecho` as `memecho analyze`.
 
 ## Common arguments
@@ -23,7 +25,7 @@ If no subcommand is provided, treat `memecho` as `memecho analyze`.
 --self <speaker-name-or-id>
 --target <speaker-name-or-id>[,<speaker-name-or-id>...]
 --context <meeting|interview|conversation|monologue|custom-text>
---format <markdown|json>
+--format <markdown|html|both|json>
 --memory <off|ask|on>
 ```
 

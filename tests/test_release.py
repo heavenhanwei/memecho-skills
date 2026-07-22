@@ -16,7 +16,7 @@ from scripts.build_release import build, declared_version
 class ReleasePackageTest(unittest.TestCase):
     def test_versions_are_aligned(self):
         version = declared_version()
-        self.assertEqual("1.0.1", version)
+        self.assertEqual("1.0.2", version)
         self.assertIn(f'version = "{version}"', (ROOT / "pyproject.toml").read_text(encoding="utf-8"))
         self.assertIn(f'__version__ = "{version}"', (ROOT / "src" / "memecho_cli" / "__init__.py").read_text(encoding="utf-8"))
         skill_text = (ROOT / "skills" / "memecho-analyze-conversation" / "SKILL.md").read_text(encoding="utf-8")

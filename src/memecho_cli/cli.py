@@ -6,6 +6,7 @@ import sys
 import uuid
 from pathlib import Path
 
+from .rendering import render_html, render_markdown
 from .validation import validate_request, validate_result
 
 
@@ -51,6 +52,11 @@ def parser_for_cli():
     validate = subparsers.add_parser("validate", help="Validate a request or result JSON file")
     validate.add_argument("kind", choices=["request", "result"])
     validate.add_argument("path")
+    render = subparsers.add_parser("render", help="Render result JSON as Markdown or standalone HTML")
+    render.add_argument("path", help="Validated memEcho result JSON")
+    render.add_argument("--format", choices=["markdown", "html", "both"], default="markdown")
+    render.add_argument("--output", help="Output path, or basename for --format both")
+    render.add_argument("--title", help="Optional report title")
     return parser
 
 
@@ -149,6 +155,37 @@ def validate_file(kind, path):
     return 0
 
 
+def render_file(path, report_format, output=None, title=None):
+    try:
+        source = Path(path)
+        data = json.loads(source.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as exc:
+        print(f"ERROR: invalid JSON input: {exc}", file=sys.stderr)
+        return 2
+    errors = validate_result(data)
+    if errors:
+        for error in errors:
+            print(f"ERROR: {error}", file=sys.stderr)
+        return 1
+    renderers = {"markdown": render_markdown, "html": render_html}
+    if report_format != "both":
+        rendered = renderers[report_format](data, title)
+        if output:
+            Path(output).write_text(rendered, encoding="utf-8")
+            print(f"Wrote {output}")
+        else:
+            sys.stdout.write(rendered + ("" if rendered.endswith("\n") else "\n"))
+        return 0
+    base = Path(output) if output else source.with_suffix("").with_name(source.stem + ".report")
+    if base.suffix in {".md", ".html"}:
+        base = base.with_suffix("")
+    for kind, suffix in (("markdown", ".md"), ("html", ".html")):
+        target = base.with_suffix(suffix)
+        target.write_text(renderers[kind](data, title), encoding="utf-8")
+        print(f"Wrote {target}")
+    return 0
+
+
 def main(argv=None):
     parser = parser_for_cli()
     args = parser.parse_args(argv)
@@ -157,6 +194,8 @@ def main(argv=None):
         return 0
     if args.command == "validate":
         return validate_file(args.kind, args.path)
+    if args.command == "render":
+        return render_file(args.path, args.format, args.output, args.title)
     try:
         request = build_request(args)
     except ValueError as exc:

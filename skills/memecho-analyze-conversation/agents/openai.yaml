@@ -1,8 +1,10 @@
 interface:
   display_name: "memEcho Conversation Analysis"
-  short_description: "Minutes, VAD, self echo, and conversation coaching"
-  brand_color: "#7164E8"
-  default_prompt: "Use $memecho-analyze-conversation to analyze this text or recording, identify the target person and who I am, then produce evidence-linked minutes, content analysis, VAD, self echo, or interactive coaching."
+  short_description: "Minutes, VAD, self echo, coaching, and visual reports"
+  icon_small: "./assets/memecho-icon-512.png"
+  icon_large: "./assets/memecho-logo.svg"
+  brand_color: "#6D5ED8"
+  default_prompt: "Use $memecho-analyze-conversation to analyze this conversation with evidence-linked minutes, content analysis, VAD, and self echo, then render a readable Markdown or HTML report."
 
 policy:
   allow_implicit_invocation: true

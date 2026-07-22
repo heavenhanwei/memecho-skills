@@ -60,6 +60,16 @@ memecho validate request examples/request-meeting.json
 memecho validate result examples/result-text-only.json
 ```
 
+渲染分析结果：
+
+```bash
+memecho render examples/result-text-only.json --format markdown --output report.md
+memecho render examples/result-text-only.json --format html --output report.html
+memecho render examples/result-text-only.json --format both --output report
+```
+
+Markdown 报告包含纯 ASCII 的可信度与 VAD 图，适合终端、GitHub 和 SkillHub。HTML 报告是 UTF-8 单文件，样式内嵌，不加载远程脚本、字体或分析服务，可直接保存并离线打开。
+
 ### 媒体输入
 
 音频或视频路径会保留在 `source.path`，CLI 不会读取或转写媒体：
